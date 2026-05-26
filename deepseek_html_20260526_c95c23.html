@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Snap Grow | Digital Marketing Agency</title>
+  <!-- Google Fonts: Inter for modern readability -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 10% 20%, #0A0F1A 0%, #02040A 100%);
+      font-family: 'Inter', sans-serif;
+      color: #EFF3FC;
+      line-height: 1.45;
+      scroll-behavior: smooth;
+    }
+
+    /* glass morphism with vibrant neon borders (green/blue/pink/purple) - no gold */
+    .glass-card {
+      background: rgba(12, 18, 28, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: 2rem;
+      border: 1px solid rgba(0, 255, 200, 0.25);
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.6), 0 0 0 1px rgba(72, 255, 220, 0.1) inset;
+      transition: transform 0.25s ease, box-shadow 0.3s ease, border-color 0.2s;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 28px 40px -16px rgba(0,0,0,0.7), 0 0 0 1px rgba(0, 255, 200, 0.4) inset;
+      border-color: #00FFCC;
+    }
+
+    /* container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 4rem;
+    }
+
+    /* header with logo & since date */
+    .logo-area {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0, 255, 200, 0.3);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .logo-icon {
+      font-size: 2.6rem;
+      filter: drop-shadow(0 0 6px #00D4FF);
+      animation: pulseGlow 3s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0% { text-shadow: 0 0 2px #00FFCC; }
+      50% { text-shadow: 0 0 12px #3B82F6, 0 0 4px #00FFCC; }
+      100% { text-shadow: 0 0 2px #00FFCC; }
+    }
+
+    .logo-text h1 {
+      font-size: 2.1rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #A7FFEB, #4FACFE, #C084FC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: linear-gradient(135deg, #9CD4FF, #D9A7FC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.8px;
+    }
+
+    .since {
+      background: rgba(0, 255, 200, 0.12);
+      backdrop-filter: blur(5px);
+      padding: 0.45rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(0, 230, 200, 0.5);
+      color: #C1FFEC;
+    }
+
+    /* social buttons (fb + whatsapp) */
+    .social-buttons {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(8px);
+      padding: 0.7rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(0, 255, 200, 0.6);
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-social i {
+      font-size: 1.3rem;
+    }
+
+    .btn-social:hover {
+      background: rgba(0, 255, 200, 0.2);
+      border-color: #00FFCC;
+      transform: scale(1.02);
+      box-shadow: 0 0 14px rgba(0, 255, 200, 0.4);
+    }
+
+    /* info section (summary, mission) */
+    .info-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 2rem 0 2.5rem;
+    }
+
+    .info-card {
+      flex: 1;
+      min-width: 250px;
+      padding: 1.6rem 1.8rem;
+    }
+
+    .info-card h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(120deg, #75FAFF, #C084FC);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      border-left: 4px solid #00E0FF;
+      padding-left: 0.8rem;
+    }
+
+    .info-card p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: #E2E9FFcc;
+    }
+
+    .mission-block {
+      margin-top: 1rem;
+    }
+
+    .mission-block p {
+      margin: 0.3rem 0;
+    }
+
+    /* packages */
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 2rem 0 1rem;
+      background: linear-gradient(125deg, #A5F0FF, #BD8AFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      letter-spacing: -0.2px;
+    }
+
+    .packages-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin: 1.8rem 0 2rem;
+      justify-content: center;
+    }
+
+    .package {
+      flex: 1;
+      min-width: 260px;
+      background: rgba(8, 12, 22, 0.75);
+      backdrop-filter: blur(14px);
+      border-radius: 1.8rem;
+      padding: 1.6rem 1.5rem 2rem;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 230, 210, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .package:hover {
+      border-color: #3B82F6;
+      box-shadow: 0 0 22px rgba(59, 130, 246, 0.3);
+    }
+
+    .package h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #BCF0FF, #B77CFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.3rem;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin: 0.5rem 0;
+      background: linear-gradient(145deg, #FFFFFF, #89F7FE);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .service-list {
+      list-style: none;
+      margin: 1rem 0 1.5rem;
+      flex-grow: 1;
+    }
+
+    .service-list li {
+      padding: 0.45rem 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      border-bottom: 1px dashed rgba(0, 255, 200, 0.15);
+    }
+
+    .service-list li i {
+      width: 22px;
+      color: #1EFFD0;
+      font-size: 0.85rem;
+    }
+
+    .btn-start {
+      background: rgba(46, 204, 180, 0.15);
+      border: 1.5px solid #2ECCAF;
+      color: #D0FFFA;
+      padding: 0.75rem 0;
+      border-radius: 60px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 1rem;
+      text-align: center;
+      font-family: inherit;
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-start:hover {
+      background: #00E6C3;
+      color: #0A0F1A;
+      border-color: #00FFCC;
+      box-shadow: 0 0 16px #22FFDD;
+      transform: scale(0.98);
+    }
+
+    /* other services section */
+    .other-services {
+      background: rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(10px);
+      border-radius: 1.8rem;
+      padding: 1.5rem 2rem;
+      margin: 1rem 0 2rem;
+      border: 1px solid rgba(72, 187, 255, 0.5);
+      transition: all 0.2s;
+    }
+
+    .other-services h4 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(120deg, #ADE0FF, #B97CFF);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    .other-tags {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 0.8rem 0;
+    }
+
+    .other-tags span {
+      background: rgba(0, 210, 200, 0.2);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border-left: 2px solid #26E6FF;
+    }
+
+    .other-service-btn {
+      background: rgba(92, 255, 200, 0.2);
+      border: 1px solid #5CFAC8;
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: white;
+      margin-top: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .other-service-btn:hover {
+      background: #2AD4B0;
+      color: #021017;
+      box-shadow: 0 0 10px #0effd0;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.8rem;
+      border-top: 1px solid rgba(0, 255, 220, 0.2);
+      padding-top: 2rem;
+      color: #B5CFE8;
+    }
+
+    /* animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.65s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+
+    /* responsive */
+    @media (max-width: 780px) {
+      .container {
+        padding: 1rem 1.2rem 2rem;
+      }
+      .logo-area {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .social-buttons {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      .package h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <!-- HEADER with logo and establishment date -->
+  <div class="logo-area fade-up">
+    <div class="brand">
+      <div class="logo-icon"><i class="fas fa-camera-retro"></i>✨</div>
+      <div class="logo-text">
+        <h1>SNAP GROW</h1>
+        <span>SOCIAL MEDIA MARKETING AGENCY</span>
+      </div>
+    </div>
+    <div class="since">
+      <i class="far fa-calendar-alt"></i> Since 2026.03.26
+    </div>
+  </div>
+
+  <!-- Separate FB & WhatsApp buttons (direct navigation) -->
+  <div class="social-buttons fade-up delay-1">
+    <a class="btn-social" href="https://www.facebook.com/share/14XfVTpEX4q/" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-facebook-f"></i> Facebook Page
+    </a>
+    <a class="btn-social" href="https://wa.me/94762863124" target="_blank" rel="noopener noreferrer">
+      <i class="fab fa-whatsapp"></i> WhatsApp Direct
+    </a>
+  </div>
+
+  <!-- Executive Summary & Business/Mission/Vision (Glass Cards) -->
+  <div class="info-grid">
+    <div class="info-card glass-card fade-up delay-2">
+      <h3><i class="fas fa-bolt"></i> Executive Summary</h3>
+      <p>Snap Grow is a modern digital marketing agency focused on delivering fast, impactful, and visually engaging marketing solutions. The name “Snap Grow” represents instant attention (“Snap”) and strong brand visibility (“Grow”), reflecting our mission to help businesses grow quickly and shine in the digital world. We provide services including social media management, content creation, graphic design, video editing, advertising, and branding. Our goal is to help businesses attract more customers and build a powerful online presence.</p>
+    </div>
+    <div class="info-card glass-card fade-up delay-3">
+      <h3><i class="fas fa-chart-line"></i> Business Identity</h3>
+      <p><strong>📌 Business Description:</strong> Snap Grow is a creative digital marketing agency designed to support businesses in building a strong digital identity.</p>
+      <div class="mission-block">
+        <p><strong style="color:#6EF3D6;">🎯 Mission:</strong> To help businesses grow rapidly through creative, high-quality, and strategic digital marketing.</p>
+        <p><strong style="color:#C28BFF;">👁️ Vision:</strong> To become a recognized and trusted digital marketing agency known for delivering fast results and impactful branding.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Packages section with Start buttons (WhatsApp pre-filled) -->
+  <h2 class="section-title fade-up delay-3"><i class="fas fa-gem"></i> Our Packages</h2>
+  <div class="packages-wrapper">
+    <!-- BASIC PACKAGE -->
+    <div class="package fade-up delay-3">
+      <h3>📦 Basic</h3>
+      <div class="price">Rs. 5,000</div>
+      <ul class="service-list">
+        <li><i class="fas fa-check-circle"></i> Social media management</li>
+        <li><i class="fas fa-video"></i> 1 – Video</li>
+        <li><i class="fas fa-images"></i> 5 – Posts</li>
+        <li><i class="fas fa-pen-fancy"></i> Basic caption</li>
+      </ul>
+      <div class="small-note" style="font-size:0.7rem; color:#9AD0F5;">✨ Suitable for small scale businesses</div>
+      <button class="btn-start" data-package="Basic Package" data-price="Rs. 5000" data-services="Social media management, 1 Video, 5 Posts, Basic caption">Start with Basic <i class="fab fa-whatsapp"></i></button>
+    </div>
+    <!-- STANDARD PACKAGE -->
+    <div class="package fade-up delay-4">
+      <h3>📈 Standard</h3>
+      <div class="price">Rs. 15,000</div>
+      <ul class="service-list">
+        <li><i class="fas fa-check-circle"></i> Social media management</li>
+        <li><i class="fas fa-video"></i> 4 – Videos</li>
+        <li><i class="fas fa-images"></i> 16 – Posts</li>
+        <li><i class="fas fa-pen-fancy"></i> Basic caption</li>
+        <li><i class="fas fa-microphone-alt"></i> Voice over</li>
+      </ul>
+      <div class="small-note" style="font-size:0.7rem; color:#9AD0F5;">🔥 Suitable for mid scale businesses</div>
+      <button class="btn-start" data-package="Standard Package" data-price="Rs. 15000" data-services="Social media management, 4 Videos, 16 Posts, Basic caption, Voice over">Start with Standard <i class="fab fa-whatsapp"></i></button>
+    </div>
+    <!-- PREMIUM PACKAGE -->
+    <div class="package fade-up delay-5">
+      <h3>🏆 Premium</h3>
+      <div class="price">Rs. 35,000</div>
+      <ul class="service-list">
+        <li><i class="fas fa-check-circle"></i> Social media management</li>
+        <li><i class="fas fa-video"></i> 08 – Videos</li>
+        <li><i class="fas fa-images"></i> 30 – Posts</li>
+        <li><i class="fas fa-pen-fancy"></i> Basic caption</li>
+        <li><i class="fas fa-microphone-alt"></i> Voice over</li>
+        <li><i class="fas fa-magic"></i> Content creation</li>
+      </ul>
+      <div class="small-note" style="font-size:0.7rem; color:#9AD0F5;">💎 Suitable for large scale businesses</div>
+      <button class="btn-start" data-package="Premium Package" data-price="Rs. 35000" data-services="Social media management, 8 Videos, 30 Posts, Basic caption, Voice over, Content creation">Start with Premium <i class="fab fa-whatsapp"></i></button>
+    </div>
+  </div>
+
+  <!-- Additional Services (Buy & Selling, Event Promoting) + extra Start button for whatsapp -->
+  <div class="other-services glass-card fade-up delay-5">
+    <h4><i class="fas fa-plus-circle"></i> Additional Services</h4>
+    <div class="other-tags">
+      <span><i class="fas fa-store"></i> Buy & Selling Assistance</span>
+      <span><i class="fas fa-calendar-star"></i> Event Promoting</span>
+    </div>
+    <p style="margin-top: 8px; font-size:0.85rem;">Custom solutions to elevate your brand — from product selling campaigns to event buzz.</p>
+    <button id="otherServicesBtn" class="other-service-btn"><i class="fab fa-whatsapp"></i> Inquire about Add-ons →</button>
+  </div>
+
+  <div class="footer">
+    <p><i class="far fa-copyright"></i> 2026 Snap Grow — Digital Marketing Agency | fast, creative, results-driven</p>
+    <p style="margin-top: 0.5rem;"><i class="fas fa-glasses"></i> Glassmorphism • Neon vibes • Instant growth</p>
+  </div>
+</div>
+
+<script>
+  // WhatsApp business number (international format: 94762863124)
+  const WA_NUMBER = "94762863124";
+
+  // unified function to send WhatsApp message with custom details
+  function sendWhatsAppMessage(packageName, price, serviceDetails, isOther = false) {
+    let messageIntro = `Hello Snap Grow Team! 🚀%0A%0A`;
+    let detailsText = '';
+    if (isOther) {
+      detailsText = `*I'm interested in your Additional Services (Buy & Selling / Event Promoting)*%0A`;
+      detailsText += `I would like to know more about custom packages & pricing.%0A`;
+      detailsText += `Please share the details for my business needs. 🙌%0A`;
+    } else {
+      detailsText = `*${packageName} Inquiry*%0A💰 Price: ${price}%0A📋 Services Included:%0A`;
+      let formattedServices = serviceDetails.replace(/,/g, '%0A• ');
+      detailsText += `• ${formattedServices}%0A%0A`;
+      detailsText += `🔹 I'm interested in this package — please guide me through the next steps.%0A`;
+    }
+    let dateTime = new Date().toLocaleString('en-LK');
+    let fullMsg = messageIntro + detailsText + `%0A📅 Request sent: ${dateTime}%0AThank you! 🙏 (Snap Grow Website)`;
+    const waLink = `https://wa.me/${WA_NUMBER}?text=${fullMsg}`;
+    window.open(waLink, '_blank');
+  }
+
+  // Attach event listeners to all package "Start" buttons
+  const startButtons = document.querySelectorAll('.btn-start');
+  startButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const packageName = btn.getAttribute('data-package');
+      const price = btn.getAttribute('data-price');
+      const services = btn.getAttribute('data-services');
+      if (packageName && price && services) {
+        sendWhatsAppMessage(packageName, price, services, false);
+      } else {
+        // fallback: find closest package
+        const parentPkg = btn.closest('.package');
+        if(parentPkg) {
+          let pkgTitle = parentPkg.querySelector('h3')?.innerText.replace(/[📦📈🏆]/g,'').trim() || "Package";
+          let pkgPriceElem = parentPkg.querySelector('.price')?.innerText || "Contact";
+          let servicesList = [];
+          parentPkg.querySelectorAll('.service-list li').forEach(li => {
+            let text = li.innerText.trim();
+            if(text) servicesList.push(text);
+          });
+          sendWhatsAppMessage(pkgTitle, pkgPriceElem, servicesList.join(', '), false);
+        } else {
+          sendWhatsAppMessage("Marketing Plan", "flexible pricing", "Social media & creative assets", false);
+        }
+      }
+    });
+  });
+
+  // Additional Services button (Buy & selling / event promoting) -> whatsapp message with custom extra details
+  const otherBtn = document.getElementById('otherServicesBtn');
+  if(otherBtn) {
+    otherBtn.addEventListener('click', () => {
+      // send pre-filled details about "Buy and selling / Event promoting" package
+      let customMsg = `Hello Snap Grow! 🌟%0A%0A`;
+      customMsg += `*I'm interested in your ADDITIONAL SERVICES:*%0A`;
+      customMsg += `🔹 Buy & Selling Assistance%0A🔹 Event Promoting%0A%0A`;
+      customMsg += `Please provide more details & custom pricing. I'd love to collaborate! 💼%0A`;
+      customMsg += `(Inquiry from Snap Grow website - additional services)`;
+      const waLink = `https://wa.me/${WA_NUMBER}?text=${customMsg}`;
+      window.open(waLink, '_blank');
+    });
+  }
+
+  // ensure direct WhatsApp button also uses the same number (already in <a>). For safety, prevent duplication.
+  // All good: Facebook page button uses exact link.
+  console.log("Snap Grow | Glassmorphic design with green/blue/purple tones, start buttons send package details to WhatsApp");
+</script>
+</body>
+</html>
